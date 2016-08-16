@@ -11,7 +11,7 @@
 
 main()
 {
-  printf(" Enter the sring ( note press ctrl d to end program) :");
+  printf(" Enter the string : ");
   yylex();
   printf(" %d Vowel \n %d constonant",count1,count2);
 }

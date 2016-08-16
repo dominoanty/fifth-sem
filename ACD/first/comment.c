@@ -27,6 +27,8 @@ void main()
   scanf("%s", line);
   for(i=0; i<strlen(line);i++)
   {
+    printf("\n Character %c current state : ", line[i]);
+    print_state(current_state);
     if(current_state == OTHER)
     {
       if(line[i] == '/')
@@ -49,7 +51,10 @@ void main()
     if(current_state == COMMENT_START)
     {
       if(line[i] == '*')
+      {
+        printf("\nReached the end of comment");
         current_state = COMMENT_END_START;
+      }
       continue;
     }
     if(current_state == COMMENT_END_START)
@@ -64,6 +69,9 @@ void main()
       current_state = OTHER;
   }
   print_state(current_state);
+  
   if(current_state != COMMENT_END_END)
     printf("\nLine is not a comment ");
+  else
+    printf("\n Line is a comment");
 }
