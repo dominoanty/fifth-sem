@@ -24,7 +24,8 @@ void main()
   int current_state = OTHER;
   int i=0;
   char line[30];
-  scanf("%s", line);
+  fgets(line, 30, stdin);
+  printf("\nLength of the line : %d", strlen(line));
   for(i=0; i<strlen(line);i++)
   {
     printf("\n Character %c current state : ", line[i]);
@@ -32,7 +33,9 @@ void main()
     if(current_state == OTHER)
     {
       if(line[i] == '/')
+      {
         current_state = COMMENT_START_START;
+      }
       continue;
     }
     if(current_state == COMMENT_START_START)
@@ -65,13 +68,13 @@ void main()
         current_state = COMMENT_START;
       continue;
     }
-    if (current_state == COMMENT_END_END)
-      current_state = OTHER;
+
   }
   print_state(current_state);
-  
+
   if(current_state != COMMENT_END_END)
     printf("\nLine is not a comment ");
   else
     printf("\n Line is a comment");
 }
+
