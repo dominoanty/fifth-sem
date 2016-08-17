@@ -4,7 +4,9 @@
 int main()
 {
   int nthreads, tid;
-  #pragma omp parallel private(tid)
+#pragma omp num_threads(10)
+  {
+#pragma omp parallel private(tid)
   {
     tid=omp_get_thread_num();
     printf("\nHello World from thread= %d", tid);
@@ -14,4 +16,6 @@ int main()
       printf("\nNumber of threads = %d\n", nthreads);
     }
   }
+  }
+  
 }

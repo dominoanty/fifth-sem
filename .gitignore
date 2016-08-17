@@ -1,0 +1,5 @@
+# Compiled lex files 
+####################
+*.yy.c
+*.out
+
