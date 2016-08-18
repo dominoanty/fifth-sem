@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  	<title>
+  		First Ex
+  	</title>
+  </head>
+  <body>
+    <input type="text" id="oddeven"/>
+    <button type="button" id="oddeven_button"> Odd/Even </button><br/>
+
+    <input type="text" id="palindrome"/>
+    <button type="button" id="palindrome_button"> Palindrome </button><br/>
+
+    <img src="../images/off.png" height="200" id="change_image"/><br/>
+
+    <h4> Calculator </h4>
+    <input type="text" id="calcfield" value="0"/><br/>
+    <button type="button" id="b1" class="number">1 </button>
+    <button type="button" id="b2" class="number">2 </button>
+    <button type="button" id="b3" class="number">3 </button>
+    <button type="button" id="bplus">+ </button>
+    <button type="button" id="bclear">C </button><br/>
+    <button type="button" id="b4" class="number">4 </button>
+    <button type="button" id="b5" class="number">5 </button>
+    <button type="button" id="b6" class="number">6 </button>
+    <button type="button" id="bminus">- </button><br/>
+    <button type="button" id="b7" class="number">7 </button>
+    <button type="button" id="b8" class="number">8 </button>
+    <button type="button" id="b9" class="number">9 </button>
+    <button type="button" id="bmult">* </button><br/>
+    <button type="button" id="bdiv">/ </button>
+    <button type="button" id="b0" class="number">0 </button>
+    <button type="button" id="bequal">= </button>
+    <button type="button" id="bback">&lt;- </button>
+	<script>
+    //	var name = prompt("Give number ");
+    //	alert("Your name is  " + name);
+    calcField = document.getElementById("calcfield");
+    document.getElementById("oddeven_button")
+	    	.addEventListener("click", function(){
+	    		var number = document.getElementById("oddeven").value;
+	    		if(number %2 == 0)
+	    			alert("Even ");
+	    		else
+	    			alert("Odd")
+	    		;
+	   		});
+	document.getElementById("palindrome_button")
+	    	.addEventListener("click", function(){
+	    		var string = document.getElementById("palindrome").value;
+	    		if(string === string.split("").reverse().join(""))
+	    			alert("Palindrome ");
+	    		else
+	    			alert("Not Palindrome");
+	   		});
+	document.getElementById("change_image")
+			.addEventListener("mouseover", function(e){
+				e.target.src="../images/on.jpg";
+			});
+
+	document.getElementById("change_image")
+			.addEventListener("mouseout", function(e){
+				e.target.src="../images/off.png";
+			});
+	number_buttons = [].slice.call(document.getElementsByClassName("number"));
+	
+	document.getElementById("bclear").addEventListener("click", function(e){
+		calcField.value="0";
+	});
+	document.getElementById("bback").addEventListener("click", function(e){
+		calcField.value=calcField.value.split("").slice(0,-1).join("");//.join("");
+		if(calcField.value === "")
+			calcField.value = "0";
+	});
+	for(var index in number_buttons)
+		{
+			console.log(number_buttons[index]);
+			number_buttons[index].addEventListener("click", function(e){
+
+				calcField.value = parseInt(calcField.value +e.target.id.split("")[1] )
+				console.log(e.target);
+				console.log(e.target.id.split("")[1]);
+			});
+		}
+
+
+    </script>
+  </body>
+</html>
